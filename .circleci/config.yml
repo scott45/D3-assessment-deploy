@@ -16,7 +16,6 @@ machine:
     - sudo -u postgres psql -p 5432 -c "create database develop_db;"
     - rm -rf migrations
 
-version: 2
 jobs:
   build:
     docker:
