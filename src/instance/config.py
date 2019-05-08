@@ -14,7 +14,7 @@ def db(current=None):
         "postgres": {
             'test': 'postgresql://@localhost/testing_db',
             'develop': 'postgresql://@localhost/develop_db',
-
+        }
     }
     return dbase[current]
 
