@@ -1,0 +1,41 @@
+machine:
+  environment:
+    PROJECT_ID: katedeploy
+    CLUSTER_NAME: eatout-kate
+    COMPUTE_ZONE: us-central1-a
+
+    #As specified in Deployment.yml
+    DEPLOYMENT_NAME: assessment-kate
+    CONTAINER_NAME: kate-app
+
+test:
+    override:
+    - createdb testing_db;
+    - createdb develop_db;
+    - rm -rf migrations
+    - python manage.py databases init
+    - python manage.py databases migrate
+    - python manage.py databases upgrade
+    - pytest 
+
+# Update kubectl and gcloud.
+dependencies:
+  pre:
+    - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update --version 120.0.0
+    - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update --version 120.0.0 kubectl
+
+deployment:
+    production:
+        branch: master
+        commands:  
+        - echo $SERVICE_KEY > key.txt
+        - base64 -i key.txt -d > ${HOME}/gcloud-service-key.json
+        - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account ${ACCOUNT_ID} --key-file ${HOME}/gcloud-service-key.json
+        - sudo /opt/google-cloud-sdk/bin/gcloud config set project $PROJECT_ID
+        - sudo /opt/google-cloud-sdk/bin/gcloud --quiet config set container/cluster $CLUSTER_NAME
+        - sudo /opt/google-cloud-sdk/bin/gcloud config set compute/zone $COMPUTE_ZONE
+        - sudo /opt/google-cloud-sdk/bin/gcloud --quiet container clusters get-credentials $CLUSTER_NAME
+        - sudo service docker start
+        - docker build -t gcr.io/${PROJECT_ID}/node-app:$CIRCLE_SHA1 .
+        - sudo /opt/google-cloud-sdk/bin/gcloud docker -- push gcr.io/${PROJECT_ID}/flaskkate:$CIRCLE_SHA1
+        - sudo /opt/google-cloud-sdk/bin/kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/flaskkate:$CIRCLE_SHA1

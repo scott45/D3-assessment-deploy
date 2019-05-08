@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: assessment-kate
+  labels:
+    #Project ID
+    app: katedeploy
+spec:
+  #Run two instances of our application
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: katedeploy
+    spec:
+      #Container details
+      containers:
+        - name: kate-app
+          image: gcr.io/katedeploy/flaskkateapp
+          imagePullPolicy: Always
+          #Ports to expose
+          ports:
+          - containerPort: 8000
