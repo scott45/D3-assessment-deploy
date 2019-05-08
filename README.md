@@ -40,30 +40,11 @@ Create the database and run migrations
 `$ python manage.py db migrate`
 
 `$ python manage.py db upgrade`
-
-All done! Now, start your server by running `python manage.py runserver`. You could use a GUI platform like [postman](https://www.getpostman.com/) to make requests to and fro the api.
-### Endpoints
-
-Here is a list of all the endpoints in bucketlist app.
-
-Endpoint | Functionality| Access
------------- | ------------- | ------------- 
-POST bucketlist/app/v1/auth/login |Logs a user in | PUBLIC
-POST bucketlist/app/v1/auth/register | Registers a user | PUBLIC
-POST bucketlist/app/v1/bucketlists/ | Creates a new bucket list | PRIVATE
-GET bucketlist/app/v1/bucketlists/ | Lists all created bucket lists | PRIVATE
-GET bucketlist/app/v1/bucketlists/id | Gets a single bucket list with the suppled id | PRIVATE
-PUT bucketlist/app/v1/bucketlists/id | Updates bucket list with the suppled id | PRIVATE
-DELETE bucketlist/app/v1/bucketlists/id | Deletes bucket list with the suppled id | PRIVATE
-POST bucketlist/app/v1/bucketlists/id/items/ | Creates a new item in bucket list | PRIVATE
-PUT bucketlist/app/v1/bucketlists/id/items/item_id | Updates a bucket list item | PRIVATE
-DELETE bucketlist/app/v1/bucketlists/id/items/item_id | Deletes an item in a bucket list | PRIVATE
-
 ## License
 
 ### The MIT License (MIT)
 
-Copyright (c) 2017 [BUSINGE SCOTT [ANDELA]]
+Copyright (c) 2019 [BUSINGE SCOTT [ANDELA]]
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal
