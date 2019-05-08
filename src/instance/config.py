@@ -14,7 +14,7 @@ def db(current=None):
         "postgres": {
             'test': 'postgresql://@localhost/testing_db',
             'develop': 'postgresql://@localhost/develop_db',
-            'production': "postgres://postgres2:postgres2@35.192.147.163:5432/postgres2"
+            # 'production': "postgressql://postgres2:postgres2@35.192.147.163:5432/postgres2"
         }
 
     }
@@ -43,7 +43,7 @@ class DevelopmentEnvironment(MainConfiguration):
 class ProductionEnvironment(MainConfiguration):
     DEBUG = False
     TESTING = False
-    SQLALCHEMY_DATABASE_URI = db()['production']
+    # SQLALCHEMY_DATABASE_URI = db()['production']
 
 
 # Dictionary with keys mapping to the different configuration environments
