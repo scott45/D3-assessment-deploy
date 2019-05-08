@@ -4,17 +4,9 @@ machine:
     PROJECT_ID: katedeploy
     CLUSTER_NAME: eatout-kate
     COMPUTE_ZONE: us-central1-a
-
-    #As specified in Deployment.yml
+    
     DEPLOYMENT_NAME: assessment-kate
     CONTAINER_NAME: kate-app
-
-    PATH: /usr/lib/postgresql/9.6/bin/:$PATH
-    pre:
-    - sudo service postgresql start 9.6
-    - sudo -u postgres psql -p 5432 -c "create database testing_db;"
-    - sudo -u postgres psql -p 5432 -c "create database develop_db;"
-    - rm -rf migrations
 
 jobs:
   build:
@@ -25,53 +17,40 @@ jobs:
         environment:
           POSTGRES_DB: postgres2
           POSTGRES_USER: postgres2
-
     working_directory: ~/repo
-
     steps:
       - checkout
-
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "requirements.txt" }}
             - v1-dependencies-
-
       - run:
           name: install dependencies
           command: |
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
-
       - save_cache:
           paths:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
-
-      # - run:
-      #     name: run db migrations
-      #     command: |
-      #       python manage.py databases init
-      #       python manage.py databases migrate
-      #       python manage.py databases upgrade
-
       - run:
           name: run tests
           command: |
             . venv/bin/activate
             nosetests tests
 
-      # - store_artifacts:
-      #     path: test-reports
-      #     destination: test-reports
-
   deploy:
       docker:
-        - image: circleci/python:3.6.4
+        - image: google/cloud-sdk
           environment:
             GPROJECT_ID: katedeploy
             CLUSTER_NAME: eatout-kate
             COMPUTE_ZONE: us-central1-a
+
+            DEPLOYMENT_NAME: assessment-kate
+            CONTAINER_NAME: kate-app
+
       steps:
         - checkout
         - setup_remote_docker

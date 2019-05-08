@@ -14,8 +14,6 @@ def db(current=None):
         "postgres": {
             'test': 'postgresql://@localhost/testing_db',
             'develop': 'postgresql://@localhost/develop_db',
-            # 'production': "postgressql://postgres2:postgres2@35.192.147.163:5432/postgres2"
-        }
 
     }
     return dbase[current]
