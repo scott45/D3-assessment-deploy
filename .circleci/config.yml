@@ -19,7 +19,12 @@ machine:
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.1
+      - image: debian:jessie
+
+      - image: circleci/postgres:9.6
+        environment:
+          POSTGRES_DB: postgres2
+          POSTGRES_USER: postgres2
 
     working_directory: ~/repo
 
@@ -72,7 +77,8 @@ jobs:
         - setup_remote_docker
         - run:
             name: Build and deploy application
-            command: chmod +x scripts/deploy.sh && bash scripts/deploy.sh
+            command: |
+              chmod +x scripts/deploy.sh && bash scripts/deploy.sh
 
 workflows:
   version: 2
