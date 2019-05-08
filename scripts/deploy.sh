@@ -19,7 +19,7 @@ configureGoogleCloudSdk(){
     gcloud config set project $PROJECT_ID
     gcloud --quiet config set container/cluster $CLUSTER_NAME
     gcloud config set compute/zone $COMPUTE_ZONE
-    gcloud --quiet container clusters get-credentials $CLUSTER_NAME# service docker start
+    gcloud --quiet container clusters get-credentials $CLUSTER_NAME
 }
 
 buildAndTagDockerImage(){
