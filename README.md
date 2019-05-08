@@ -9,6 +9,7 @@ The Application is live on http://104.154.204.229:8000/
 
 To test out the CI & CD functionality;
 
+```
 Clone the repo `git clone https://github.com/scott45/D3-assessment-deploy.git`
 
 Create a virtual env and activate it `virtualenv kate` and `source kate/bin/activate`
@@ -24,13 +25,20 @@ Commit your changes and push to github `on the master branch`
 CircleCI will pick up the changes, run the build, deploy steps. Docker will dockerize the application and Kubernetes will set the new built image as the latest deployment.
 
 Navigate to the browser on `http://104.154.204.229:8000/` and look out for your changes that will be baked in the new image.
+```
 
 ## Tools & platforms;
+
+```
 Docker
+
 Google Cloud / Kubernetes
+
 CircleCI
+
 Flask / YAML / BASH
- 
+ ```
+
 ## License
 
 ### The MIT License (MIT)
