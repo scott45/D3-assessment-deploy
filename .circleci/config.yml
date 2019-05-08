@@ -19,7 +19,7 @@ machine:
 jobs:
   build:
     docker:
-      - image: debian:jessie
+      - image: circleci/python:3.6.4
 
       - image: circleci/postgres:9.6
         environment:
@@ -67,7 +67,7 @@ jobs:
 
   deploy:
       docker:
-        - image: python:3.6.1
+        - image: circleci/python:3.6.4
           environment:
             GPROJECT_ID: katedeploy
             CLUSTER_NAME: eatout-kate

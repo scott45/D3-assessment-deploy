@@ -8,10 +8,6 @@ COMPUTE_ZONE="us-central1-a"
 DEPLOYMENT_NAME="assessment-kate"
 CONTAINER_NAME="kate-app"
 
-installsudo(){
-    apt-get update && sudo apt-get install -y sudo
-}
-
 installGoogleCloudSdk(){
     echo "deb http://packages.cloud.google.com/apt cloud-sdk-jessie main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
@@ -45,7 +41,6 @@ deployToKubernetesCluster(){
 }
 
 main() {
-    installsudo
     installGoogleCloudSdk
     authWithServiceAccount
     configureGoogleCloudSdk
@@ -55,3 +50,8 @@ main() {
 }
 
 main
+
+# gcloud auth activate-service-account $SERVICE_KEY
+# docker build -t gcr.io/${PROJECT_ID}/flaskkateapp:$CIRCLE_SHA1 .
+# gcloud docker -- push gcr.io/katedeploy/flaskkateapp
+# kubectl set image deployment/${DEPLOYMENT_NAME} ${CONTAINER_NAME}=gcr.io/${PROJECT_ID}/flaskkateapp:$CIRCLE_SHA1
