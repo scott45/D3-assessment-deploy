@@ -1,45 +1,28 @@
-[![My Garage](https://img.shields.io/badge/My%20Garage-MyGarage-green.svg)]()
-[![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
+[![AssessmentD3](https://img.shields.io/badge/My%20Garage-MyGarage-green.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# MyGrarage : Denting API
-
+# Eat-out CI & CD : Assessment D3
 
 ## Introduction;
+Done to demonstrate CD & CD skills on a Flask application. 
+The Application is live on http://104.154.204.229:8000/
 
-# Project description
+To test out the CI & CD functionality;
+> Clone the repo `git clone https://github.com/scott45/D3-assessment-deploy.git`
+> Create a virtual env and activate it `virtualenv kate` and `source kate/bin/activate`
+> Install the requirements `pip install -r requirements.txt` 
+> To test out the application locally, run `python run.py`
+> Navigate to `src/api/templates` and edit something in the `index.html` file
+> Commit your changes and push to github `on the master branch`
+> CircleCI will pick up the changes, run the build, deploy steps. Docker will dockerize the application and Kubernetes will set the new built image as the latest deployment.
+> Navigate to the browser on `http://104.154.204.229:8000/` and look out for your changes that will be baked in the new image.
 
-**API**
-
-## Installation
+## Tools & platforms;
+Docker
+Google Cloud / Kubernetes
+CircleCI
+Flask / YAML / BASH
  
-Clone the GitHub repo with the following command:
- 
-http:
->`$ git clone https://github.com/scott45/checkpoint2-bucketlist.git`
-
-cd into the folder and install a [virtual environment](https://virtualenv.pypa.io/en/stable/)
-
-`$ virtualenv venv`
-
-Activate the virtual environment
-
-`$ venv/bin/activate`
-
-Install all app requirements
-
-`$ pip install -r requirements.txt`
-Create the database and run migrations
-
-`$ createdb denting_db`
-
-`$ createdb testing_db`
-
-`$ python manage.py db init`
-
-`$ python manage.py db migrate`
-
-`$ python manage.py db upgrade`
 ## License
 
 ### The MIT License (MIT)
