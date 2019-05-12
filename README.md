@@ -20,7 +20,7 @@ To test out the application locally, run `python run.py`
 
 Navigate to `src/api/templates` and edit something in the `index.html` file
 
-Commit your changes and push to github `on the master branch`
+Commit your changes and push to github `on the master branch` (Make sure you've accepted the github invite to get push access)
 
 CircleCI will pick up the changes, run the build, deploy steps. Docker will dockerize the application and Kubernetes will set the new built image as the latest deployment.
 
