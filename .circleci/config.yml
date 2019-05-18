@@ -15,8 +15,8 @@ jobs:
 
       - image: circleci/postgres:9.6
         environment:
-          POSTGRES_DB: postgres2
-          POSTGRES_USER: postgres2
+          POSTGRES_DB: dbname
+          POSTGRES_USER: username
     working_directory: ~/repo
     steps:
       - checkout
