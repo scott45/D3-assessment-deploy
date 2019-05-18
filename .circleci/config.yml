@@ -1,13 +1,6 @@
 version: 2
 machine:
   environment:
-    # PROJECT_ID: katedeploy
-    # CLUSTER_NAME: eatout-kate
-    # COMPUTE_ZONE: us-central1-a
-    
-    # DEPLOYMENT_NAME: assessment-kate
-    # CONTAINER_NAME: kate-app
-
     PROJECT_ID: $PROJECT_ID
     CLUSTER_NAME: $CLUSTER_NAME
     COMPUTE_ZONE: $COMPUTE_ZONE
@@ -51,13 +44,6 @@ jobs:
       docker:
         - image: google/cloud-sdk
           environment:
-            # GPROJECT_ID: katedeploy
-            # CLUSTER_NAME: eatout-kate
-            # COMPUTE_ZONE: us-central1-a
-
-            # DEPLOYMENT_NAME: assessment-kate
-            # CONTAINER_NAME: kate-app
-
             PROJECT_ID: $PROJECT_ID
             CLUSTER_NAME: $CLUSTER_NAME
             COMPUTE_ZONE: $COMPUTE_ZONE
