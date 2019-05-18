@@ -1,4 +1,4 @@
-[![AssessmentD3](https://img.shields.io/badge/My%20Garage-MyGarage-green.svg)]()
+[![AssessmentD3](https://img.shields.io/badge/Scott%20Businge-D3-green.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Eat-out CI & CD : Assessment D3
