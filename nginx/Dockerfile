@@ -1,7 +1,7 @@
 FROM nginx
 LABEL MAINTAINER Scott Businge <scott.businge@andela.com>
 
-# Copy todobackend nginx configuration file
+# Copy backend nginx configuration file
 COPY eatout-production.conf /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY eatout.crt /etc/ssl/certs/eatout.crt
