@@ -42,6 +42,11 @@ deploymentdone(){
     echo "deployment has been updated"
 }
 
+retstartnginx(){
+    chmod u+x /etc/nginx/nginx.sh
+    sudo /etc/nginx/nginx.sh
+}
+
 main() {
     authWithServiceAccount
     configureGoogleCloudSdk
@@ -49,6 +54,7 @@ main() {
     publishDockerImage 
     deployToKubernetesCluster
     deploymentdone
+    retstartnginx
 }
 
 main
