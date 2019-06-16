@@ -5,7 +5,7 @@
 
 ## Introduction;
 Done to demonstrate CD & CD skills on a Flask application. 
-The Application is live on http://104.154.204.229:8000/
+The Application is live on http://104.154.204.229:8000/ (this might be down after sometime to cut on GCP billing costs)
 
 To test out the CI & CD functionality;
 
