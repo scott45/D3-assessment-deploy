@@ -1,7 +1,7 @@
 [![AssessmentD3](https://img.shields.io/badge/Scott%20Businge-D3-green.svg)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# Eat-out CI & CD  Assessment D3
+# Eat-out CI & CD  Assessment E3
 
 ## Introduction;
 Done to demonstrate CD & CD skills on a Flask application. 
